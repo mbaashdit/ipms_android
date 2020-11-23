@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.fragments.HomeFragment">
+
+    <com.aashdit.ipms.views.RobotoBold
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Integrated Project Management System"
+        android:layout_centerInParent="true"
+        android:padding="@dimen/space_16"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:id="@+id/tv_app_label"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_dash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/rl_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/space_16"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginBottom="@dimen/space_8"
+                    app:cardCornerRadius="@dimen/space_4">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_8">
+
+                        <ImageView
+                            android:id="@+id/iv_filter"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_filter" />
+
+                        <com.aashdit.ipms.views.RobotoMedium
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/space_8"
+                            android:layout_toEndOf="@+id/iv_filter"
+                            android:text="Filter"
+                            android:textAllCaps="true"
+                            android:textColor="@color/toolbar_title_color"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/rl_top_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/space_16"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginEnd="@dimen/space_16"
+                    android:layout_marginBottom="@dimen/space_8"
+                    app:cardCornerRadius="@dimen/space_4">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/space_8">
+
+
+                        <com.aashdit.ipms.views.RobotoRegular
+                            android:id="@+id/pending_lbl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="Pending Approvals :"
+                            android:textAllCaps="false"
+                            android:textColor="#81364F6B"
+                            android:textSize="12sp" />
+
+                        <com.aashdit.ipms.views.RobotoBold
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/space_8"
+                            android:layout_toEndOf="@+id/pending_lbl"
+                            android:text="5"
+                            android:textAllCaps="true"
+                            android:textColor="#364f6b"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_16"
+                android:layout_marginEnd="@dimen/space_16"
+                app:cardCornerRadius="@dimen/space_8">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <com.aashdit.ipms.views.RobotoBold
+                        android:id="@+id/tv_project_handed_over"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_16"
+                        android:layout_marginTop="@dimen/space_8"
+                        android:layout_marginBottom="@dimen/space_8"
+                        android:background="@drawable/circle_text_bg"
+                        android:backgroundTint="#FFF5EF"
+                        android:padding="@dimen/space_16"
+                        android:text="12"
+                        android:textColor="#364F6B"
+                        android:textSize="18sp" />
+
+
+                    <com.aashdit.ipms.views.RobotoBold
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/space_16"
+                        android:layout_toEndOf="@+id/tv_project_handed_over"
+                        android:text="Projects Handed Over"
+                        android:textColor="#364F6B" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:orientation="horizontal">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_8"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginEnd="@dimen/space_8"
+                    android:layout_marginBottom="@dimen/space_8"
+                    android:layout_weight="0.5"
+                    app:cardCornerRadius="@dimen/space_8">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <com.aashdit.ipms.views.RobotoBold
+                            android:id="@+id/tv_ongoing_project"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_marginTop="@dimen/space_8"
+                            android:layout_marginBottom="@dimen/space_8"
+                            android:background="@drawable/circle_text_bg"
+                            android:backgroundTint="#FFFAF8"
+                            android:padding="@dimen/space_16"
+                            android:text="10"
+                            android:textColor="#FD5E5A"
+                            android:textSize="18sp" />
+
+
+                        <com.aashdit.ipms.views.RobotoBold
+                            android:id="@+id/tv_project_handover"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_ongoing_project"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_marginTop="@dimen/space_4"
+                            android:layout_marginBottom="@dimen/space_16"
+                            android:text="Ongoing Projects"
+                            android:textColor="#364F6B" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_8"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginEnd="@dimen/space_8"
+                    android:layout_marginBottom="@dimen/space_8"
+                    android:layout_weight="0.5"
+                    app:cardCornerRadius="@dimen/space_8">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <com.aashdit.ipms.views.RobotoBold
+                            android:id="@+id/tv_project_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_marginTop="@dimen/space_8"
+                            android:layout_marginBottom="@dimen/space_8"
+                            android:background="@drawable/circle_text_bg"
+                            android:backgroundTint="#DCFFFC"
+                            android:padding="@dimen/space_16"
+                            android:text="12"
+                            android:textColor="#09D5C1"
+                            android:textSize="18sp" />
+
+
+                        <com.aashdit.ipms.views.RobotoBold
+                            android:id="@+id/tv_project_sanctioned"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_project_count"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_marginTop="@dimen/space_4"
+                            android:layout_marginBottom="@dimen/space_16"
+                            android:text="Sanctioned Projects"
+                            android:textColor="#364F6B" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:orientation="horizontal">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_8"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginEnd="@dimen/space_8"
+                    android:layout_marginBottom="@dimen/space_8"
+                    android:layout_weight="0.5"
+                    app:cardCornerRadius="@dimen/space_8">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <com.aashdit.ipms.views.RobotoMedium
+                            android:id="@+id/tv_project_hold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_marginTop="@dimen/space_8"
+                            android:layout_marginBottom="@dimen/space_8"
+                            android:background="@drawable/circle_text_bg"
+                            android:backgroundTint="#FEFAEE"
+                            android:padding="@dimen/space_16"
+                            android:text="14"
+                            android:textColor="#F2B90C"
+                            android:textSize="18sp" />
+
+
+                        <com.aashdit.ipms.views.RobotoBold
+                            android:id="@+id/tv_project_onhold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_project_hold"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_marginTop="@dimen/space_4"
+                            android:layout_marginBottom="@dimen/space_16"
+                            android:text="Projects on Hold"
+                            android:textColor="#364F6B" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_8"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginEnd="@dimen/space_8"
+                    android:layout_marginBottom="@dimen/space_8"
+                    android:layout_weight="0.5"
+                    app:cardCornerRadius="@dimen/space_8">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <com.aashdit.ipms.views.RobotoBold
+                            android:id="@+id/tv_project_delayed_lbl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_marginTop="@dimen/space_8"
+                            android:layout_marginBottom="@dimen/space_8"
+                            android:background="@drawable/circle_text_bg"
+                            android:backgroundTint="#E3F7FF"
+                            android:padding="@dimen/space_16"
+                            android:text="15"
+                            android:textColor="#15BBFD"
+                            android:textSize="18sp" />
+
+
+                        <com.aashdit.ipms.views.RobotoBold
+                            android:id="@+id/tv_project_delayed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_project_delayed_lbl"
+                            android:layout_marginStart="@dimen/space_16"
+                            android:layout_marginTop="@dimen/space_4"
+                            android:layout_marginBottom="@dimen/space_16"
+                            android:text="Projects Delayed"
+                            android:textColor="#364F6B" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_16"
+                android:layout_marginEnd="@dimen/space_16"
+                android:layout_marginBottom="@dimen/space_16" />
+
+
+            <com.aashdit.ipms.views.RobotoBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginEnd="@dimen/space_16"
+                android:text="Ongoing Projects : District Wise"/>
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barchart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_16"
+                android:layout_marginBottom="@dimen/space_16" />
+
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart_fund"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:visibility="gone"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_16"
+                android:layout_marginEnd="@dimen/space_16"
+                android:layout_marginBottom="@dimen/space_16" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:nestedScrollingEnabled="false"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

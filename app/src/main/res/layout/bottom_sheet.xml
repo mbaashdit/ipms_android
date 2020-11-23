@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bs_background"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="90dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:cardCornerRadius="@dimen/space_8">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_8">
+
+            <com.aashdit.ipms.views.RobotoBold
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:text="@string/title_of_the_project_goes_here"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.aashdit.ipms.views.RobotoRegular
+                android:id="@+id/tv_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginTop="@dimen/space_8"
+                android:text="@string/project_id"
+                android:textSize="14sp" />
+
+            <com.aashdit.ipms.views.RobotoRegular
+                android:id="@+id/tv_progress_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:text="@string/project_id"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8">
+
+        <Button
+            android:id="@+id/bs_btn_add_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/login_btn_background"
+            android:paddingStart="@dimen/space_16"
+            android:paddingEnd="@dimen/space_16"
+            android:text="@string/add_plan"
+            android:textColor="@color/colorWhite" />
+
+        <Button
+            android:id="@+id/bs_btn_add_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/reset_btn_background"
+            android:paddingStart="@dimen/space_16"
+            android:paddingEnd="@dimen/space_16"
+            android:text="@string/add_progress"
+            android:textColor="@color/colorWhite" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8">
+
+        <com.aashdit.ipms.views.RobotoBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Financial Year : " />
+
+        <com.aashdit.ipms.views.RobotoRegular
+            android:layout_alignParentEnd="true"
+            android:id="@+id/tv_financial_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2020-21 "/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8">
+
+        <com.aashdit.ipms.views.RobotoBold
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estimateed Start Date : "/>
+
+        <com.aashdit.ipms.views.RobotoRegular
+            android:layout_alignParentEnd="true"
+            android:id="@+id/tv_est_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22-March-2020 "/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8">
+
+        <com.aashdit.ipms.views.RobotoBold
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estimated Completion Date : "/>
+
+        <com.aashdit.ipms.views.RobotoRegular
+            android:layout_alignParentEnd="true"
+            android:id="@+id/tv_est_end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="03-July-2020"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8">
+
+        <com.aashdit.ipms.views.RobotoBold
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estimated Budget(Rs) : "/>
+
+        <com.aashdit.ipms.views.RobotoRegular
+            android:layout_alignParentEnd="true"
+            android:id="@+id/tv_est_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40000000 "/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8">
+
+        <com.aashdit.ipms.views.RobotoBold
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Revised Estimated Budget(Rs) : "/>
+
+        <com.aashdit.ipms.views.RobotoRegular
+            android:layout_alignParentEnd="true"
+            android:id="@+id/tv_rev_est_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="70000000 "/>
+    </RelativeLayout>
+    
+    <com.aashdit.ipms.views.RobotoBold
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Project Description"/>
+    <com.aashdit.ipms.views.RobotoRegular
+        android:id="@+id/tv_project_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_8"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."/>
+
+
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/selectableItemBackground"
+    android:paddingStart="@dimen/space_4"
+    android:paddingTop="@dimen/space_12"
+    android:paddingEnd="@dimen/space_16"
+    android:paddingBottom="@dimen/space_12"
+    android:text="72x48 (1829 * 1219 *150)"
+    android:textColor="@color/colorBlack"
+    android:textSize="15sp" />

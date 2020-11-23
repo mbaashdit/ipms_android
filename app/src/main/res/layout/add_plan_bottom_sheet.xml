@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="90dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+
+    <com.aashdit.ipms.views.MonBold
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pause_bg"
+        android:gravity="center"
+        android:padding="16dp"
+        android:id="@+id/btm_sheet_wp_title"
+        android:text="New Work Phase"
+        android:textColor="@color/colorWhite" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/spn_work_phases"/>
+
+        <EditText
+            android:focusable="false"
+            android:clickable="true"
+            android:id="@+id/et_est_start_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Estimated Start Date" />
+
+        <EditText
+            android:focusable="false"
+            android:clickable="true"
+            android:id="@+id/et_est_end_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Estimated End Date" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/space_16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:background="@color/colorPrimarylight"
+                android:textColor="@color/colorWhite"
+                android:id="@+id/btn_add"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_4"
+                android:layout_weight="0.5"
+                android:text="Add" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_4"
+                android:layout_weight="0.5"
+                android:background="@color/colorBlack"
+                android:text="Cancel"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

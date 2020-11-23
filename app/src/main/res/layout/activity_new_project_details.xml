@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_new_project_detail_root"
+    tools:context=".ui.activities.NewProjectDetailsActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_proj_detail_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_ellipse_details">
+
+
+        <ImageView
+            android:id="@+id/iv_back_prj_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_12"
+            android:src="@drawable/ic_arrow_back" />
+
+        <com.aashdit.ipms.views.RobotoBold
+            android:id="@+id/tv_comp_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_12"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_toStartOf="@+id/tv_fy"
+            android:layout_toEndOf="@+id/iv_back_prj_detail"
+            android:text="Road Construction"
+            android:textColor="@color/toolbar_title_color"
+            android:textSize="18sp" />
+
+        <com.aashdit.ipms.views.RobotoMedium
+            android:id="@+id/tv_comp_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_comp_name"
+            android:layout_marginStart="@dimen/space_12"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_toEndOf="@+id/iv_back_prj_detail"
+            android:text="IMP34SDF5SD"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <com.aashdit.ipms.views.RobotoMedium
+            android:id="@+id/tv_fy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginEnd="@dimen/space_16" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_scheme_lbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_proj_detail_toolbar"
+        android:gravity="center"
+        android:padding="@dimen/space_16">
+
+        <com.aashdit.ipms.views.RobotoRegular
+            android:id="@+id/scheme_name_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Scheme Name : "
+            android:textColor="#686868" />
+
+        <com.aashdit.ipms.views.RobotoMedium
+            android:id="@+id/tv_scheme_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_toEndOf="@+id/scheme_name_lbl"
+            android:text="Scholarship"
+            android:textAllCaps="true"
+            android:textColor="#8C00AF9E"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_dates_lbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_scheme_lbl"
+        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_marginEnd="@dimen/space_16"
+        android:layout_marginBottom="@dimen/space_8"
+        app:cardCornerRadius="@dimen/space_8">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F9F9F9">
+
+            <LinearLayout
+                android:id="@+id/ll_est_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/space_16"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.RobotoBold
+                    android:id="@+id/tv_pd_est_start_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="21-Mar-2020"
+                    android:textColor="#000000" />
+
+                <com.aashdit.ipms.views.RobotoRegular
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Estimated Start Date" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="2dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/space_16"
+                android:layout_marginBottom="@dimen/space_16"
+                android:background="#D9D9D9" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/space_16"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.RobotoBold
+                    android:id="@+id/tv_pd_est_end_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="21-Feb-2021"
+                    android:textColor="#000000" />
+
+                <com.aashdit.ipms.views.RobotoRegular
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Estimated End Date" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_show_component"
+        android:layout_below="@+id/cv_dates_lbl">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_16"
+                android:layout_marginBottom="@dimen/space_8"
+                app:cardCornerRadius="@dimen/space_8">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#F9F9F9"
+                    android:padding="@dimen/space_16">
+
+                    <com.aashdit.ipms.views.RobotoMedium
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:text="Estimated \nBudget"
+                        android:textColor="#8A434343"
+                        android:textSize="18sp" />
+
+                    <com.aashdit.ipms.views.RobotoBold
+                        android:id="@+id/tv_inr_lbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="INR"
+                        android:textColor="#000000" />
+
+                    <com.aashdit.ipms.views.RobotoBold
+                        android:id="@+id/tv_est_budge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_inr_lbl"
+                        android:layout_alignParentEnd="true"
+                        android:text="000,000"
+                        android:textColor="#CD4F00"
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_16"
+                android:layout_marginBottom="@dimen/space_8"
+                app:cardCornerRadius="@dimen/space_8">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#F9F9F9"
+                    android:padding="@dimen/space_16">
+
+                    <com.aashdit.ipms.views.RobotoMedium
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:text="Revised Estimated \nBudget"
+                        android:textColor="#8A434343"
+                        android:textSize="18sp" />
+
+                    <com.aashdit.ipms.views.RobotoBold
+                        android:id="@+id/tv_inr_lbl_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="INR"
+                        android:textColor="#000000" />
+
+                    <com.aashdit.ipms.views.RobotoBold
+                        android:id="@+id/tv_revised_budge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_inr_lbl_2"
+                        android:layout_alignParentEnd="true"
+                        android:text="000,000"
+                        android:textColor="#8C00AF9E"
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.aashdit.ipms.views.RobotoBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/space_16"
+                android:text="Project Description"
+                android:textColor="#555555"
+                android:textSize="18sp" />
+
+            <com.aashdit.ipms.views.RobotoRegular
+                android:id="@+id/tv_project_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_16"
+                android:layout_marginEnd="@dimen/space_16" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/rl_show_component"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="#FFE4D5">
+
+        <com.aashdit.ipms.views.RobotoMedium
+            android:id="@+id/tv_show_components"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/space_8"
+            android:text="Show Work Component"
+            android:textAllCaps="true"
+            android:textColor="#F06108" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

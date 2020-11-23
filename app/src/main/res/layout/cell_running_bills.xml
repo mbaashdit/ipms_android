@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<com.aashdit.ipms.util.SwipeRevealLayout2 xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_marginBottom="@dimen/space_8"-->
+<!--    app:dragEdge="right"-->
+<!--    app:mode="same_level">-->
+
+
+<!--    <LinearLayout-->
+<!--        android:visibility="gone"-->
+<!--        android:id="@+id/rl_remove_comment"-->
+<!--        tools:ignore="RtlHardcoded"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/colorWhite"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingTop="4dp"-->
+<!--        android:paddingBottom="4dp">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/space_4"-->
+<!--            android:layout_marginEnd="@dimen/space_4"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="@dimen/space_4">-->
+
+<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/fab_update"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:src="@drawable/ic_assignment"-->
+<!--                app:backgroundTint="@color/close_item_background" />-->
+
+<!--            <com.aashdit.ipms.views.PoppinsSemiBold-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:text="Update" />-->
+
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/space_4"
+    android:layout_marginBottom="@dimen/space_8">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.aashdit.ipms.views.RobotoMedium
+            android:id="@+id/tv_cell_bill_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/space_8"
+            android:text="@string/construction_of_kalinga_model_residential_school"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cell_bill_title"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginBottom="@dimen/space_8"
+            android:orientation="vertical">
+
+            <com.aashdit.ipms.views.RobotoMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invoice_no"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <com.aashdit.ipms.views.RobotoMedium
+                android:id="@+id/tv_cell_bill_invoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cell_bill_title"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginEnd="@dimen/space_8"
+            android:layout_marginBottom="@dimen/space_8"
+            android:orientation="vertical">
+
+            <com.aashdit.ipms.views.RobotoMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/net_amount"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <com.aashdit.ipms.views.RobotoMedium
+                android:id="@+id/tv_cell_bill_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView><!--</com.aashdit.ipms.util.SwipeRevealLayout2>-->

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.ProjectDetailsActivity">
+    
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_pro_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.aashdit.ipms.views.MonSemiBold
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:id="@+id/tv_title"/>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appbar">
+
+        <Button
+            android:background="@drawable/add_plan_bg"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/btn_add_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_marginEnd="@dimen/space_8"
+            android:text="@string/add_plan"
+            android:paddingStart="@dimen/space_16"
+            android:paddingEnd="@dimen/space_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_add_progress"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:paddingStart="@dimen/space_16"
+            android:paddingEnd="@dimen/space_16"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/progress_plan_bg"
+            android:id="@+id/btn_add_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/add_progress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_add_plan"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/constraint_root">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/space_16">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.PoppinsMedium
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scheme" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:entries="@array/work_components" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.PoppinsMedium
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project_code" />
+
+                <EditText
+                    android:focusable="false"
+                    android:inputType="textCapCharacters"
+                    android:imeOptions="actionNext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_normal"
+                    tools:ignore="Autofill,LabelFor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.PoppinsMedium
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/financial_year" />
+
+                <EditText
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_normal"
+                    tools:ignore="Autofill,LabelFor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.PoppinsMedium
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/estimated_start_date" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_normal"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/ic_assignment"
+                    android:focusable="false"
+                    tools:ignore="Autofill,KeyboardInaccessibleWidget,LabelFor,TextFields" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.PoppinsMedium
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/estimated_completion_date" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_normal"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/ic_assignment"
+                    android:focusable="false"
+                    tools:ignore="Autofill,KeyboardInaccessibleWidget,LabelFor,TextFields" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.PoppinsMedium
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/estimated_budget_rs" />
+
+                <EditText
+                    android:focusable="false"
+                    tools:ignore="Autofill,KeyboardInaccessibleWidget,LabelFor,TextFields"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.PoppinsMedium
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/revised_estimated_budget_rs" />
+
+                <EditText
+                    android:focusable="false"
+                    tools:ignore="Autofill,KeyboardInaccessibleWidget,LabelFor,TextFields"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.aashdit.ipms.views.PoppinsMedium
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project_description" />
+
+                <EditText
+                    android:focusable="false"
+                    tools:ignore="Autofill,KeyboardInaccessibleWidget,LabelFor,TextFields"
+                    android:inputType="textMultiLine"
+                    android:imeOptions="actionDone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext_normal" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

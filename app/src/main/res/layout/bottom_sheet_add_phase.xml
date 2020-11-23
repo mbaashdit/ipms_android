@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F3F5"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="90dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+
+    <ImageView
+        android:id="@+id/iv_sheet_add_phase_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/space_16"
+        android:layout_marginEnd="@dimen/space_16"
+        android:src="@drawable/ic_close"
+        app:tint="@color/colorBlack" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_sheet_add_phase_close"
+        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginTop="@dimen/space_16"
+        android:layout_marginEnd="@dimen/space_16"
+        android:orientation="vertical">
+
+        <com.aashdit.ipms.views.MonBold
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Work Phase"
+            android:layout_marginBottom="@dimen/space_8"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardCornerRadius="@dimen/space_8">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Spinner
+                    android:id="@+id/spn_work_phases"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/space_16" />
+
+
+                <com.aashdit.ipms.views.MonSemiBold
+                    android:id="@+id/tv_phase_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/space_16"
+                    android:text="" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <com.aashdit.ipms.views.MonSemiBold
+            android:id="@+id/tv_est_date_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:text="Estimated Start Date" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/space_8"
+            app:cardCornerRadius="@dimen/space_8">
+
+            <RelativeLayout
+                android:id="@+id/rl_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_esd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_16"
+                    android:src="@drawable/ic_calendar" />
+
+                <com.aashdit.ipms.views.MonSemiBold
+                    android:id="@+id/tv_est_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/space_16"
+                    android:text="Estimated Start Date" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <com.aashdit.ipms.views.MonSemiBold
+            android:id="@+id/tv_eet_date_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:text="Estimated End Date" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/space_8"
+            app:cardCornerRadius="@dimen/space_8">
+
+            <RelativeLayout
+                android:id="@+id/rl_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_eed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/space_16"
+                    android:src="@drawable/ic_calendar" />
+
+                <com.aashdit.ipms.views.MonSemiBold
+                    android:id="@+id/tv_eet_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/space_16"
+                    android:text="Estimated End Date" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.aashdit.ipms.views.MonSemiBold
+            android:id="@+id/tv_remark_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:text="Remark" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="@dimen/space_8"
+            app:cardCornerRadius="@dimen/space_8">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:hint="Remark"
+                    android:gravity="top|left"
+                    android:layout_marginStart="@dimen/space_16"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:background="@null"
+                    android:maxLength="250"
+                    android:singleLine="false"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:inputType="textMultiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/et_remark_phase"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/btn_add_phase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_30"
+            android:layout_marginBottom="@dimen/space_30"
+            android:background="@drawable/login_btn_background"
+            android:text="Add phase"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+</RelativeLayout>

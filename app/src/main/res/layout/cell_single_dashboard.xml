@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/space_8"
+    android:layout_marginStart="@dimen/space_8"
+    android:layout_marginEnd="@dimen/space_8"
+    android:layout_marginTop="@dimen/space_8"
+    android:layout_marginBottom="@dimen/space_8">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.aashdit.ipms.views.RobotoMedium
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12"
+            android:textColor="@color/colorBlack"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginBottom="@dimen/space_8"
+            android:padding="@dimen/space_16"
+            android:background="@drawable/circle_text_bg"
+            android:id="@+id/tv_project_count"/>
+
+
+        <com.aashdit.ipms.views.RobotoMedium
+            android:id="@+id/tv_cell_project_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_project_count"
+            android:layout_marginTop="@dimen/space_4"
+            android:layout_marginBottom="@dimen/space_16"
+            android:text="Project Handed Over"
+            android:textColor="#364F6B"
+            android:layout_marginStart="@dimen/space_16"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

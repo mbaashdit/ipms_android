@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:tint="@color/colorPrimary"
+        android:id="@+id/iv_menu_img"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/space_8"
+        android:layout_marginEnd="@dimen/space_16"
+        android:layout_marginBottom="@dimen/space_8"
+        android:src="@drawable/btn_google_dark_focus"
+        tools:ignore="ContentDescription" />
+
+    <com.aashdit.ipms.views.RobotoMedium
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/tv_menu_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/space_16"
+        android:text="@string/menu_title"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

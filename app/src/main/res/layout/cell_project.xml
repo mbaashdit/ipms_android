@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/space_8">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:cardCornerRadius="@dimen/space_8">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_8">
+
+            <com.aashdit.ipms.views.RobotoBold
+                android:id="@+id/tv_cell_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:text="@string/title_of_the_project_goes_here"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.aashdit.ipms.views.RobotoRegular
+                android:id="@+id/tv_cell_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_cell_title"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/space_8"
+                android:layout_marginTop="@dimen/space_8"
+                android:text="@string/project_id"
+                android:textSize="14sp" />
+
+            <com.aashdit.ipms.views.RobotoRegular
+                android:id="@+id/tv_cell_progress_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_cell_title"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_8"
+                android:text="@string/project_id"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
+
+
+<!--<com.aashdit.ipms.util.SwipeRevealLayout2 xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_marginStart="2dp"-->
+<!--android:paddingStart="@dimen/space_8"-->
+<!--android:paddingTop="@dimen/space_8"-->
+<!--android:paddingEnd="0dp"-->
+<!--android:paddingBottom="@dimen/space_8"-->
+<!--app:dragEdge="right"-->
+<!--app:mode="same_level">-->
+
+<!--<LinearLayout-->
+<!--    android:id="@+id/rl_remove_comment"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@color/colorWhite"-->
+<!--    android:gravity="center_vertical"-->
+<!--    android:orientation="horizontal"-->
+<!--    android:paddingTop="4dp"-->
+<!--    android:paddingBottom="4dp"-->
+<!--    tools:ignore="RtlHardcoded">-->
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/space_4"-->
+<!--        android:layout_marginEnd="@dimen/space_4"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="@dimen/space_4">-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab_add"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:src="@drawable/ic_add"-->
+<!--            app:backgroundTint="@color/plan_item_background" />-->
+
+<!--        <com.aashdit.ipms.views.PoppinsSemiBold-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Add Plan" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/space_4"-->
+<!--        android:layout_marginEnd="@dimen/space_4"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="@dimen/space_4">-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab_progress"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:src="@drawable/ic_arrow_upward"-->
+<!--            app:backgroundTint="@color/progress_item_background" />-->
+
+<!--        <com.aashdit.ipms.views.PoppinsSemiBold-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Add Progress" />-->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/space_4"-->
+<!--        android:layout_marginEnd="@dimen/space_4"-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="@dimen/space_4">-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab_close"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:src="@drawable/ic_close"-->
+<!--            app:backgroundTint="@color/close_item_background" />-->
+
+<!--        <com.aashdit.ipms.views.PoppinsSemiBold-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Close" />-->
+
+<!--    </LinearLayout>-->
+
+<!--</LinearLayout>-->
+
+<!--<androidx.cardview.widget.CardView-->
+<!--    android:id="@+id/cv_root"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    app:cardBackgroundColor="@color/item_cell_background"-->
+<!--    app:cardCornerRadius="@dimen/space_8">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="0.8">-->
+
+<!--            <com.aashdit.ipms.views.PoppinsSemiBold-->
+<!--                android:id="@+id/tv_cell_title"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_marginStart="@dimen/space_8"-->
+<!--                android:layout_marginTop="@dimen/space_8"-->
+<!--                android:text="@string/title_of_the_project_goes_here"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <com.aashdit.ipms.views.PoppinsMedium-->
+<!--                android:id="@+id/tv_cell_id"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tv_cell_title"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:layout_marginStart="@dimen/space_8"-->
+<!--                android:layout_marginTop="@dimen/space_8"-->
+<!--                android:text="@string/project_id"-->
+<!--                android:textSize="14sp" />-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="@dimen/space_16"-->
+<!--            android:layout_weight="0.2">-->
+
+<!--            <ProgressBar-->
+<!--                android:id="@+id/progressBar"-->
+<!--                style="?android:attr/progressBarStyleHorizontal"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:indeterminate="false"-->
+<!--                android:max="100"-->
+<!--                android:progress="0"-->
+<!--                android:progressDrawable="@drawable/circular"-->
+<!--                android:secondaryProgress="0" />-->
+
+
+<!--            <com.aashdit.ipms.views.PoppinsMedium-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/progressBar"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_marginTop="@dimen/space_8"-->
+<!--                android:text="Work Progress"-->
+<!--                android:textSize="9sp" />-->
+
+<!--            <com.aashdit.ipms.views.PoppinsMedium-->
+<!--                android:id="@+id/tv_cell_progress_percentage"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:layout_marginEnd="12dp"-->
+<!--                android:text="20%"-->
+<!--                android:textSize="12sp" />-->
+
+<!--        </RelativeLayout>-->
+
+<!--    </LinearLayout>-->
+<!--</androidx.cardview.widget.CardView>-->
+<!--</com.aashdit.ipms.util.SwipeRevealLayout2>-->

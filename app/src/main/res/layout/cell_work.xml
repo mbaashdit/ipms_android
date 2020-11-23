@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@color/hint"
+    android:id="@+id/rl_root_bg"
+    android:layout_marginTop="@dimen/space_16"
+    android:layout_marginBottom="@dimen/space_16"
+    android:layout_marginStart="@dimen/space_8"
+    android:layout_marginEnd="@dimen/space_8"
+    android:layout_height="wrap_content">
+
+    <com.aashdit.ipms.views.PoppinsMedium
+        android:id="@+id/tv_work_title"
+        android:textColor="@color/colorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Excavation"
+        android:paddingTop="@dimen/space_4"
+        android:paddingBottom="@dimen/space_4"
+        android:paddingStart="@dimen/space_8"
+        android:paddingEnd="@dimen/space_8"/>
+
+</RelativeLayout>

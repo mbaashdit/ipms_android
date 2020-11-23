@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/space_8"
+    app:cardCornerRadius="2dp">
+
+    <RelativeLayout
+        android:id="@+id/rl_status_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:visibility="visible"
+            android:id="@+id/rl_wc_icon"
+            android:layout_width="60dp"
+            android:layout_height="100dp"
+            android:background="#FFF0E7">
+
+            <ImageView
+                android:id="@+id/iv_wc_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_progress"
+                android:visibility="gone" />
+
+            <CheckBox
+                android:id="@+id/checkbox_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:button="@drawable/checkbox_selector"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/space_8"
+            android:layout_toEndOf="@+id/rl_wc_icon">
+
+            <com.aashdit.ipms.views.RobotoBold
+                android:id="@+id/tv_wc_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/space_4"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_4"
+                android:layout_marginBottom="@dimen/space_8"
+                android:layout_toStartOf="@+id/ll_start_root"
+                android:maxLines="2"
+                android:text="Work Component 1"
+                android:textColor="#848484"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_phase_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_wc_title"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/space_4"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_4"
+                android:layout_toStartOf="@+id/ll_start_root"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/iv_wc_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_ellipse_4" />
+
+                <com.aashdit.ipms.views.MonRegular
+                    android:visibility="gone"
+                    android:id="@+id/tv_wc_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:text="Started" />
+
+                <com.aashdit.ipms.views.RobotoRegular
+                    android:id="@+id/tv_wc_phase_lbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Phase : " />
+
+                <com.aashdit.ipms.views.RobotoBold
+                    android:id="@+id/tv_wc_phase_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:text="5" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_total_duration_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_phase_count"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/space_4"
+                android:layout_marginTop="@dimen/space_8"
+                android:layout_marginEnd="@dimen/space_4"
+                android:layout_toStartOf="@+id/ll_start_root"
+                android:orientation="horizontal">
+
+
+
+
+                <com.aashdit.ipms.views.RobotoRegular
+                    android:id="@+id/tv_wc_total_duration_lbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Duration : " />
+
+                <com.aashdit.ipms.views.RobotoBold
+                    android:id="@+id/tv_wc_total_duration_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_4"
+                    android:text="0" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_start_root"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/space_8"
+                android:layout_toStartOf="@+id/ll_end_root"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DAF6F3"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_4">
+
+                    <com.aashdit.ipms.views.RobotoBold
+                        android:id="@+id/tv_start_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="25"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                    <com.aashdit.ipms.views.RobotoMedium
+                        android:id="@+id/tv_start_mon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="MAY"
+                        android:textColor="#7C7C7E"
+                        android:textSize="13sp" />
+
+                    <com.aashdit.ipms.views.RobotoRegular
+                        android:id="@+id/tv_start_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="2020"
+                        android:textColor="#57030303"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <com.aashdit.ipms.views.RobotoMedium
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:background="#DAF6F3"
+                    android:padding="@dimen/space_4"
+                    android:text="START"
+                    android:textAllCaps="true"
+                    android:textColor="#00D3C0"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_end_root"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/space_8"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#F8F8F8"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_4">
+
+                    <com.aashdit.ipms.views.RobotoBold
+                        android:id="@+id/tv_end_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="25"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp" />
+
+                    <com.aashdit.ipms.views.RobotoMedium
+                        android:id="@+id/tv_end_mon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="MAY"
+                        android:textColor="#7C7C7E"
+                        android:textSize="13sp" />
+
+                    <com.aashdit.ipms.views.RobotoRegular
+                        android:id="@+id/tv_end_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="2021"
+                        android:textColor="#57030303"
+                        android:textSize="10sp" />
+
+
+                </LinearLayout>
+
+                <com.aashdit.ipms.views.RobotoMedium
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:background="#FFF0E7"
+                    android:gravity="center"
+                    android:padding="@dimen/space_4"
+                    android:text="END"
+                    android:textAllCaps="true"
+                    android:textColor="#F05000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <com.aashdit.ipms.views.RobotoMedium
+                android:id="@+id/tv_est_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_wc_title"
+                android:text="Est. Start Date : 22/07/2020"
+                android:visibility="gone" />
+
+            <com.aashdit.ipms.views.RobotoMedium
+                android:id="@+id/tv_est_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_est_start_date"
+                android:text="Est. End Date : 22/07/2020"
+                android:visibility="gone" />
+
+            <com.aashdit.ipms.views.RobotoMedium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_wc_title"
+                android:layout_alignParentEnd="true"
+                android:text="Phase count : 2"
+                android:visibility="gone" />
+
+            <com.aashdit.ipms.views.RobotoMedium
+                android:id="@+id/tv_wc_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Duration : 2"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
