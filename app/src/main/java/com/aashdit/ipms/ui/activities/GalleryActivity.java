@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.adapters.GalleryAdapter;
 import com.aashdit.ipms.adapters.ProgressAdapter;
@@ -82,7 +83,7 @@ public class GalleryActivity extends AppCompatActivity {
         reqParam.put("wpid", String.valueOf(workPlanId));
         reqParam.put("token", token);
 
-        AndroidNetworking.get(Constants.BASE_URL.concat("workprogress/getProgressDetailsByPlanId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("workprogress/getProgressDetailsByPlanId"))
                 .addQueryParameter(reqParam)
                 .setTag("ProgressableWorkByWorkId")
                 .setPriority(Priority.HIGH)

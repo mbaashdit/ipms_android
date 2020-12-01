@@ -30,6 +30,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.adapters.PhaseSpinnerAdapter;
 import com.aashdit.ipms.adapters.WorkPhaseAdapter;
@@ -278,7 +279,7 @@ public class WorkPhasesActivity extends AppCompatActivity implements WorkPhaseAd
         reqParam.put("wid", String.valueOf(workId));
         reqParam.put("token", token);
 
-        AndroidNetworking.get(Constants.BASE_URL.concat("workprogress/getProgressablePlansByWorkId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("workprogress/getProgressablePlansByWorkId"))
                 .addQueryParameter(reqParam)
                 .setTag("ProgressableWorkByWorkId")
                 .setPriority(Priority.HIGH)
@@ -344,7 +345,7 @@ public class WorkPhasesActivity extends AppCompatActivity implements WorkPhaseAd
         reqParam.put("wid", String.valueOf(workId));
         reqParam.put("token", token);
 
-        AndroidNetworking.get(Constants.BASE_URL.concat("workplan/getEditablePlansByWorkId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("workplan/getEditablePlansByWorkId"))
                 .addQueryParameter(reqParam)
                 .setTag("PlannableWorkByWorkId")
                 .setPriority(Priority.HIGH)
@@ -415,7 +416,7 @@ public class WorkPhasesActivity extends AppCompatActivity implements WorkPhaseAd
         reqParam.put("token", token);
 
 
-        AndroidNetworking.get(Constants.BASE_URL.concat("workplan/getApprovablePlansByWorkId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("workplan/getApprovablePlansByWorkId"))
                 .addQueryParameter(reqParam)
                 .setTag("getApprovablePlansByWorkId")
                 .setPriority(Priority.HIGH)
@@ -458,7 +459,7 @@ public class WorkPhasesActivity extends AppCompatActivity implements WorkPhaseAd
      * this api is to get all the phases from master
      */
     private void getPhasesFromMaster() {
-        AndroidNetworking.get(Constants.BASE_URL.concat("master/getAllWorkPhases"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("master/getAllWorkPhases"))
                 .addQueryParameter("token", token)
                 .setTag("getAllWorkPhasesMaster")
                 .setPriority(Priority.HIGH)
@@ -762,7 +763,7 @@ public class WorkPhasesActivity extends AppCompatActivity implements WorkPhaseAd
                 .readTimeout(120, TimeUnit.SECONDS)
                 .writeTimeout(120, TimeUnit.SECONDS)
                 .build();
-        AndroidNetworking.post(Constants.BASE_URL.concat("workplan/saveWorkPlan"))
+        AndroidNetworking.post(BuildConfig.BASE_URL.concat("workplan/saveWorkPlan"))
                 .addQueryParameter("userId", String.valueOf(sp.getIntData(Constants.USER_ID)))
                 .addQueryParameter("token", sp.getStringData(Constants.APP_TOKEN))
                 .addJSONObjectBody(outerObject)

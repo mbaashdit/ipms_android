@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.adapters.ProjTabAdapter;
 import com.aashdit.ipms.adapters.WorkAdapter;
@@ -122,7 +123,7 @@ public class ProjectListActivity extends AppCompatActivity implements WorkAdapte
 
         String userId = String.valueOf(sp.getIntData(Constants.USER_ID));
         String token = sp.getStringData(Constants.APP_TOKEN);
-        AndroidNetworking.get(Constants.BASE_URL.concat("getProjectDetailsByUserId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("getProjectDetailsByUserId"))
                 .addQueryParameter("userId", userId)
                 .addQueryParameter("token", token)
                 .setTag("ProjectList")

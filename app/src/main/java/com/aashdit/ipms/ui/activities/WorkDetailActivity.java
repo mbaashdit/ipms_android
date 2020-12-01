@@ -40,6 +40,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.adapters.CapturedImageAdapter;
 import com.aashdit.ipms.adapters.ProgressAdapter;
@@ -418,7 +419,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         }
 
 
-        String DownloadUrl = Constants.BASE_URL + "workprogress/getWorkProgressReportByProjectId?projectId=".concat(String.valueOf(projectId));
+        String DownloadUrl = BuildConfig.BASE_URL + "workprogress/getWorkProgressReportByProjectId?projectId=".concat(String.valueOf(projectId));
         DownloadManager.Request request1 = new DownloadManager.Request(Uri.parse(DownloadUrl));
         request1.setDescription("Sample PDF File");   //appears the same in Notification bar while downloading
         request1.setTitle("IPMS Progress Status");
@@ -472,7 +473,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
                 e.printStackTrace();
             }
 
-            AndroidNetworking.post(Constants.BASE_URL.concat("workprogress/pauseWorkPlan"))
+            AndroidNetworking.post(BuildConfig.BASE_URL.concat("workprogress/pauseWorkPlan"))
                     .addQueryParameter(reqParam)
                     .addJSONObjectBody(dataObj)
                     .setTag("stopWorkPlan")
@@ -569,7 +570,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(Constants.BASE_URL.concat("workprogress/startWorkPlan"))
+        AndroidNetworking.post(BuildConfig.BASE_URL.concat("workprogress/startWorkPlan"))
                 .addQueryParameter(reqParam)
                 .addJSONObjectBody(dataObj)
                 .setTag("stopWorkPlan")
@@ -637,7 +638,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        AndroidNetworking.post(Constants.BASE_URL.concat("workprogress/resumeWorkPlan"))
+        AndroidNetworking.post(BuildConfig.BASE_URL.concat("workprogress/resumeWorkPlan"))
                 .addQueryParameter(reqParam)
                 .addJSONObjectBody(dataObj)
                 .setTag("stopWorkPlan")
@@ -711,7 +712,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        AndroidNetworking.post(Constants.BASE_URL.concat("workprogress/stopWorkPlan"))
+        AndroidNetworking.post(BuildConfig.BASE_URL.concat("workprogress/stopWorkPlan"))
                 .addQueryParameter(reqParam)
                 .addJSONObjectBody(dataObj)
                 .setTag("stopWorkPlan")
@@ -783,7 +784,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(Constants.BASE_URL.concat("workprogress/updateActualProgress"))
+        AndroidNetworking.post(BuildConfig.BASE_URL.concat("workprogress/updateActualProgress"))
                 .addQueryParameter(reqParam)
                 .addJSONObjectBody(dataObj)
                 .setTag("updateActualProgress")
@@ -834,7 +835,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         reqParam.put("wpid", String.valueOf(workPlanId));
         reqParam.put("token", token);
 
-        AndroidNetworking.get(Constants.BASE_URL.concat("workprogress/getProgressDetailsByPlanId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("workprogress/getProgressDetailsByPlanId"))
                 .addQueryParameter(reqParam)
                 .setTag("ProgressableWorkByWorkId")
                 .setPriority(Priority.HIGH)

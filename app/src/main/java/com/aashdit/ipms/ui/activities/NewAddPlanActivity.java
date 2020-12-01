@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.adapters.UnApprovedWorkComponentsAdapter;
 import com.aashdit.ipms.adapters.WorkComponentsAdapter;
@@ -413,7 +414,7 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(Constants.BASE_URL.concat("workplan/revertWorkPlans"))
+        AndroidNetworking.post(BuildConfig.BASE_URL.concat("workplan/revertWorkPlans"))
                 .addQueryParameter("userId", userId)
                 .addQueryParameter("token", token)
                 .addJSONObjectBody(mainObject)
@@ -475,7 +476,7 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(Constants.BASE_URL.concat("workplan/approveWorkPlans"))
+        AndroidNetworking.post(BuildConfig.BASE_URL.concat("workplan/approveWorkPlans"))
                 .addQueryParameter("userId", userId)
                 .addQueryParameter("token", token)
                 .addJSONObjectBody(mainObject)
@@ -520,7 +521,7 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
         reqParam.put("pid", String.valueOf(projectId));
         reqParam.put("token", token);
 
-        AndroidNetworking.get(Constants.BASE_URL.concat("workplan/getApprovableWorksByProjectId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("workplan/getApprovableWorksByProjectId"))
                 .addQueryParameter(reqParam)
                 .setTag("ApprovableWorksByProjectId")
                 .setPriority(Priority.HIGH)
@@ -605,7 +606,7 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
         Log.i(TAG, "sendPlaForApproval: \n\n\n\n" + outerObject + "    \n\n\n\n\n");
 //        }
         if (isConnected) {
-            AndroidNetworking.post(Constants.BASE_URL.concat("workplan/sendWorkPlanForApproval"))
+            AndroidNetworking.post(BuildConfig.BASE_URL.concat("workplan/sendWorkPlanForApproval"))
                     .addQueryParameter("userId", userId)
                     .addQueryParameter("token", token)
                     .addJSONObjectBody(outerObject)
@@ -672,7 +673,7 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
         reqParam.put("pid", String.valueOf(projectId));
         reqParam.put("token", token);
 
-        AndroidNetworking.get(Constants.BASE_URL.concat("workplan/getPlannableWorksByProjectId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("workplan/getPlannableWorksByProjectId"))
                 .addQueryParameter(reqParam)
                 .setTag("PlannableWorkByProjectId")
                 .setPriority(Priority.HIGH)

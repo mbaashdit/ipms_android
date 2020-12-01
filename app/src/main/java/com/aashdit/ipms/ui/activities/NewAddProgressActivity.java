@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.adapters.ProgressableWorkAdapter;
 import com.aashdit.ipms.adapters.WorkComponentsAdapter;
@@ -92,7 +93,7 @@ public class NewAddProgressActivity extends AppCompatActivity implements WorkCom
 
     private void getProgressableWork() {
         progressBar.setVisibility(View.VISIBLE);
-        AndroidNetworking.get(Constants.BASE_URL.concat("workprogress/getProgressableWorksByProjectId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("workprogress/getProgressableWorksByProjectId"))
                 .addQueryParameter("pid",String.valueOf(projectId))
                 .addQueryParameter("token",sp.getStringData(Constants.APP_TOKEN))
                 .setTag("PlannableWorkByProjectId")

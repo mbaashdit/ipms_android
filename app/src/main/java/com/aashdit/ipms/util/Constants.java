@@ -13,7 +13,8 @@ public class Constants {
     public static String PROGRESS = "Progress";
 
 //    public static String BASE_URL = "http://103.148.157.194:8080/api/";//prod
-    public static String BASE_URL = "http://209.97.136.18:8080/ipms/api/";//staging
+//    public static String BASE_URL = "http://209.97.136.18:8080/ipms/api/";//staging
+//    public static String BASE_URL = "http://209.97.136.18:8080/ipms_STSC/api/";//staging
 
     //"http://192.168.3.190:4040/ipms/api/";//
 //    public static String BASE_URL = "http://209.97.136.18:8080/ipms_app/api/";

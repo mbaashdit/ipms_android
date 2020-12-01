@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.app.App;
 import com.aashdit.ipms.network.ANetwork;
@@ -111,7 +112,7 @@ public class SplashActivity extends AppCompatActivity implements ConnectivityCha
     private void callLoginApi() {
 
 
-        AndroidNetworking.post(Constants.BASE_URL + "moblogin")
+        AndroidNetworking.post(BuildConfig.BASE_URL + "moblogin")
                 .addBodyParameter("userName", userName)
                 .addBodyParameter("password", password)
                 .addBodyParameter("ip", ip)

@@ -29,7 +29,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    flavorDimensions "ipms"
+    productFlavors {
+        aashdit {
+            dimension "ipms"
+//            applicationIdSuffix ".demo"
+            buildConfigField("String","FLAVOUR_TYPE","\"DEMO\"")
+            buildConfigField("String", "BASE_URL", "\"http://209.97.136.18:8080/ipms/api/\"")
+        }
+        stsc {
+            dimension "ipms"
+            applicationIdSuffix ".stsc"
+            buildConfigField("String","FLAVOUR_TYPE","\"STSC\"")
+            buildConfigField("String", "BASE_URL", "\"http://209.97.136.18:8080/ipms_STSC/api/\"")
+        }
+    }
 }
 
 dependencies {

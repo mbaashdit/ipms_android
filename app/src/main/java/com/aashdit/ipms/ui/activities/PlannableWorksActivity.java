@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.models.PlanableWorks;
 import com.aashdit.ipms.util.Constants;
@@ -63,7 +64,7 @@ public class PlannableWorksActivity extends AppCompatActivity {
         reqParam.put("pid", projectId);
         reqParam.put("token", token);
 
-        AndroidNetworking.get(Constants.BASE_URL.concat("workplan/getPlannableWorksByProjectId"))
+        AndroidNetworking.get(BuildConfig.BASE_URL.concat("workplan/getPlannableWorksByProjectId"))
                 .addQueryParameter(reqParam)
                 .setTag("PlannableWorkByProjectI")
                 .setPriority(Priority.HIGH)

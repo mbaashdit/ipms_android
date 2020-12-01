@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.util.Constants;
 import com.aashdit.ipms.util.SharedPrefManager;
@@ -126,7 +127,7 @@ public class SaveWorkPlanActivity extends AppCompatActivity {
             }
         }
 
-        AndroidNetworking.post(Constants.BASE_URL.concat("workplan/saveWorkPlan"))
+        AndroidNetworking.post(BuildConfig.BASE_URL.concat("workplan/saveWorkPlan"))
                 .addQueryParameter(reqParam)
                 .addPathParameter(jsonObject)
                 .setTag("SaveWorkPlan")

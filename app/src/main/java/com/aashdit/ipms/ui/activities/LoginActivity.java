@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.databinding.ActivityLoginBinding;
 import com.aashdit.ipms.network.Client;
@@ -105,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
     private void callLoginApi2() {
 
         progressBar.setVisibility(View.VISIBLE);
-        AndroidNetworking.post(Constants.BASE_URL+"moblogin")
+        AndroidNetworking.post(BuildConfig.BASE_URL+"moblogin")
                 .addBodyParameter("userName", userName)
                 .addBodyParameter("password", password)
                 .addBodyParameter("ip", ip)

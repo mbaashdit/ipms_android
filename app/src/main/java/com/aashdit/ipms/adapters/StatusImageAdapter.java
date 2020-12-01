@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.util.Constants;
 import com.bumptech.glide.Glide;
@@ -38,13 +39,13 @@ public class StatusImageAdapter extends RecyclerView.Adapter<StatusImageAdapter.
         String imageUrl = images.get(position);
 //        Glide.with(context).load("https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg").into(holder.mIvImage);
         if (!imageUrl.isEmpty()) {
-            Glide.with(context).load(Constants.BASE_URL+"workprogress/viewInterimStatusHistoryImages?photoId="+imageUrl).into(holder.mIvImage);
+            Glide.with(context).load(BuildConfig.BASE_URL+"workprogress/viewInterimStatusHistoryImages?photoId="+imageUrl).into(holder.mIvImage);
         }
         holder.mIvClose.setVisibility(View.GONE);
         holder.mIvImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fullImageListener.showfullscreenImage(Constants.BASE_URL+"workprogress/viewInterimStatusHistoryImages?photoId="+imageUrl,position);
+                fullImageListener.showfullscreenImage(BuildConfig.BASE_URL+"workprogress/viewInterimStatusHistoryImages?photoId="+imageUrl,position);
             }
         });
 
