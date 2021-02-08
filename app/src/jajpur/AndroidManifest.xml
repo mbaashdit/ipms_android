@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.aashdit.ipms">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACTION_IMAGE_CAPTURE" />
+    <uses-permission android:name="android.permission.ACTION_PICK" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+
+    <application
+        android:name=".app.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
+        tools:ignore="LockedOrientationActivity">
+        <activity android:name=".ui.activities.GalleryActivity"></activity>
+        <activity android:name=".ui.activities.NewProjectDetailsActivity" />
+        <activity android:name=".ui.activities.PlannableWorksActivity" />
+        <activity android:name=".ui.activities.SaveWorkPlanActivity" />
+        <activity android:name=".ui.activities.WorkDetailActivity" />
+        <activity android:name=".ui.activities.NewAddProgressActivity" />
+        <activity android:name=".ui.activities.WorkPhasesActivity" />
+        <activity android:name=".ui.activities.NewAddPlanActivity" />
+        <activity android:name=".ui.activities.ProfileActivity" />
+        <activity android:name=".ui.activities.TreeViewActivity" />
+        <activity android:name=".ui.activities.ThankYouActivity" />
+        <activity android:name=".ui.activities.StartActivity" />
+        <activity android:name=".ui.activities.ViewCertificateActivity" />
+        <activity android:name=".ui.activities.GenerateBillActivity" />
+        <activity android:name=".ui.activities.ProjectDetailsActivity" />
+        <activity android:name=".ui.activities.AddProgressActivity" />
+        <activity android:name=".ui.activities.AddPlanActivity" />
+        <activity android:name=".ui.activities.BillActivity" />
+        <activity android:name=".ui.activities.ProjectListActivity" />
+        <activity android:name=".ui.activities.RegisterActivity" />
+        <activity android:name=".ui.activities.ForgetPasswordActivity" />
+        <activity android:name=".ui.activities.SignupActivity" />
+        <activity
+            android:name=".ui.activities.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activities.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver
+            android:name=".receiver.ConnectivityChangeReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

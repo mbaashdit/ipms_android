@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F06108</color>
+    <color name="colorPrimaryDark">#232323</color>
+<!--    <color name="colorPrimaryDark">#DF5601</color>-->
+    <color name="colorAccent">#F06108</color>
+    <color name="colorTransparent">#00F06108</color>
+    <color name="colorAppBg">#dddbdb</color>
+    <color name="colorlightBlue">#406EF3</color>
+    <color name="textcolor">#fbe9c1</color>
+    <color name="buttoncolor">#ed2f45</color>
+    <color name="splash_light">#edd7a1</color>
+    <color name="splash_matia">#7d2513</color>
+    <color name="colorPrimarylight">#2F4AFA</color>
+    <color name="colorNotStarted">#E4E9F5</color>
+    <color name="colorPause">#E4E9F5</color>
+    <color name="colorInProgress">#FFE9DC</color>
+    <color name="colorCompleted">#DAF6F3</color>
+    <color name="colorStopStatus">#486461</color>
+    <color name="colorStopProgress">#09D5C1</color>
+    <color name="colorEnddayStop">#09D5C1</color>
+    <color name="colorEndyearStop">#3BF0DE</color>
+    <color name="colorCompleteView">#54688B</color>
+    <color name="colorProgressView">#FAD8C4</color>
+    <color name="colorPauseView">#616672</color>
+    <color name="colorPauseStartDay">#969696</color>
+    <color name="colorActualProgress">#666666</color>
+    <color name="colorPauseBg">#F9F9F9</color>
+    <color name="colorStopBg">#D6F1EE</color>
+    <color name="colorProgressPdf">#D6F1EE</color>
+    <color name="colorProgressbgColor">#EF7D75</color>
+    <color name="colorProgressRedColor">#F61808</color>
+
+<!--    <color name="colorPrimarylight">#FC5185</color>-->
+    <color name="green">#4caf50</color>
+    <color name="hint">#B6B3B3</color>
+    <color name="back">#eeeeee</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLightBlack">#FF424242</color>
+    <color name="colorBlack">#000000</color>
+    <color name="color_alpha">#3B000000</color><!--#3B000000-->
+    <color name="background">#dddddd</color>
+    <color name="colorLoginBtn">#00AEF9</color>
+    <color name="colorRegisterTxt">#f191b2</color>
+    <color name="colorYellow">#EDDE56</color>
+    <color name="navigationViewColor">#00AEF9</color>
+
+    <color name="selected_cell_background">#0E1838</color>
+    <color name="unselected_cell_background">#8E96A4</color>
+    <color name="progress_item_background">#0E1838</color>
+    <color name="plan_item_background">#4476D7</color>
+    <color name="close_item_background">#E7424A</color>
+    <color name="item_cell_background">#D8DBE2</color>
+    <color name="progress_screen_background">#F6F8FA</color>
+
+    <color name="project_list_cell">#F5F5F5</color>
+    <color name="toolbar_title_color">#F06108</color>
+
+    <color name="odd_color">#f3f7fc</color>
+    <color name="even_color">#f9f9f9</color>
+    <color name="green_light" >#B5FAB7</color>
+</resources>

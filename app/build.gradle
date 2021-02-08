@@ -33,15 +33,22 @@ android {
     productFlavors {
         aashdit {
             dimension "ipms"
-//            applicationIdSuffix ".demo"
+            applicationIdSuffix ".demo"
             buildConfigField("String","FLAVOUR_TYPE","\"DEMO\"")
-            buildConfigField("String", "BASE_URL", "\"http://209.97.136.18:8080/ipms/api/\"")
+            buildConfigField("String", "BASE_URL", "\"http://192.168.1.109:3000/ipms-web/api/\"")//biswajit
+//            buildConfigField("String", "BASE_URL", "\"http://209.97.136.18:8080/ipms/api/\"")//official
         }
         stsc {
             dimension "ipms"
             applicationIdSuffix ".stsc"
             buildConfigField("String","FLAVOUR_TYPE","\"STSC\"")
             buildConfigField("String", "BASE_URL", "\"http://209.97.136.18:8080/ipms_STSC/api/\"")
+        }
+        jajpur {
+            dimension "ipms"
+            applicationIdSuffix ".jpr"
+            buildConfigField("String","FLAVOUR_TYPE","\"JAJPUR\"")
+            buildConfigField("String", "BASE_URL", "\"http://209.97.136.18:8080/ipms-jajpur/api/\"")
         }
     }
 }

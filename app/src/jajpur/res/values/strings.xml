@@ -1,0 +1,151 @@
+<resources>
+    <string name="app_name">IPMS - JAJPUR</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="internal_storage">internal_storage</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="Open">open</string>
+    <string name="Close">close</string>
+    <string name="internet_issue">Internet connection issue</string>
+
+
+    <string name="prog_adapter_lat">Latitude : </string>
+    <string name="prog_adapter_lng">Longitude : </string>
+    <string name="prog_adapter_area">Area : </string>
+    <string name="prog_adapter_prog">Progress : </string>
+
+    <string name="work_detail_progress">Progress : </string>
+    <string name="gallery_adapter_lat">Latitude : </string>
+    <string name="gallery_adapter_lng">Longitude : </string>
+    <string name="gallery_adapter_area">Area : </string>
+    <string name="gallery_adapter_Reason">Reason : </string>
+    <string name="gallery_adapter_actual_progress">Actual Progress : </string>
+    <!-- rs -->
+    <string name="Rs">\u20B9</string>
+    <!-- activity_login -->
+    <string name="login">Login</string>
+    <string name="user_name">UserName</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget Password ?</string>x
+    <string name="don_t_have_an_account_yet">Don\'t have an account yet ?</string>
+    <string name="signup"><u>Sign up</u></string>
+    <string name="integrated_project">Integrated Project</string>
+    <string name="management_system">Management System</string>
+
+    <!-- activity_signup -->
+    <string name="signup_title">Sign up</string>
+
+    <!-- activity_forget_password -->
+    <string name="forget_password_title">Forget Password</string>
+
+    <!-- activity_register -->
+    <string name="registration">Registration</string>
+    <string name="menu_title">Menu Title</string>
+
+    <!-- activity_project_list -->
+    <string name="project_list">Project List</string>
+    <string name="title_of_the_project_goes_here">Title of the project goes here</string>
+    <string name="project_id">Project ID</string>
+    <string name="status">status</string>
+
+    <!-- activity_generate_bill -->
+    <string name="generate_bill">Generate Bill</string>
+    <string name="construction_of_kalinga_model_residential_school">Construction of kalinga model residential school</string>
+    <string name="invoice_no">Invoice No.</string>
+    <string name="net_amount">Net Amount</string>
+    <string name="add_plan">Add Plan</string>
+    <string name="add_progress">Add Progress</string>
+    <string name="scheme">Scheme :</string>
+    <string name="project_code">Project Code :</string>
+    <string name="financial_year">Financial Year :</string>
+    <string name="estimated_start_date">Estimated Start Date :</string>
+    <string name="estimated_completion_date">Estimated Completion Date :</string>
+    <string name="estimated_budget_rs">Estimated Budget (Rs.) :</string>
+    <string name="revised_estimated_budget_rs">Revised Estimated Budget (Rs.) :</string>
+    <string name="project_description">Project Description :</string>
+    <string name="planned_progress">Planned Progress (%)</string>
+    <string name="actual_progress">Actual Progress (%)</string>
+    <string name="total_duration_days">Total Duration (Days)</string>
+    <string name="attach_supporting_document">Attach Supporting Document</string>
+    <string name="choose_a_file">Choose a file</string>
+    <string name="duration">Duration</string>
+    <string name="actual_end_date">Actual End Date</string>
+    <string name="planned_end_date">Planned End Date</string>
+    <string name="actual_start_date">Actual Start Date</string>
+    <string name="planned_start_date">Planned Start Date</string>
+    <string name="interim_progress_date">Interim Progress Date</string>
+    <string name="work_phases_completed">Work Phases Completed</string>
+
+
+    <!-- spinners -->
+    <string-array name="work_components">
+        <item>Select work component </item>
+        <item>work component one </item>
+        <item>work component two </item>
+    </string-array>
+    <string-array name="work_phases">
+        <item>on going </item>
+        <item>completed </item>
+    </string-array>
+
+    <string-array name="projects">
+        <item>Kalinga model residential school </item>
+        <item>Kalinga model residential school </item>
+        <item>Kalinga model residential school </item>
+    </string-array>
+    <string-array name="work_phase">
+        <item>Work phase 1</item>
+        <item>Work phase 2</item>
+        <item>Work phase 3</item>
+    </string-array>
+
+    <string-array name="financial">
+        <item>2020–21</item>
+        <item>2019–20</item>
+        <item>2018–19</item>
+    </string-array>
+
+    <string-array name="district">
+        <item>Anugul</item>
+        <item>Boudh</item>
+        <item>Balangir</item>
+        <item>Bargarh</item>
+        <item>Balasore</item>
+        <item>Bhadrak</item>
+        <item>Cuttack</item>
+        <item>Deogarh</item>
+        <item>Dhenkanal</item>
+        <item>Ganjam</item>
+        <item>Gajapati</item>
+        <item>Jharsuguda</item>
+        <item>Jajpur</item>
+        <item>Jagatsinghapur</item>
+        <item>Khordha</item>
+        <item>Keonjhar</item>
+        <item>Kalahandi</item>
+        <item>Kandhamal</item>
+        <item>Koraput</item>
+        <item>Kendrapara</item>
+        <item>Malkangiri</item>
+        <item>Mayurbhanj</item>
+        <item>Nabarangpur</item>
+        <item>Nuapada</item>
+        <item>Nayagarh</item>
+        <item>Puri</item>
+        <item>Rayagada</item>
+        <item>Sambalpur</item>
+        <item>Subarnapur</item>
+        <item>Sundargarh</item>
+    </string-array>
+
+
+</resources>

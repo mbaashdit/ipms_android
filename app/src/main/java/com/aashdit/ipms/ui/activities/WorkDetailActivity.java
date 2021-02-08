@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -462,6 +464,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
                 reqObj.put("photos", tempImgArray);
                 reqObj.put("latitude", String.valueOf(latitude));
                 reqObj.put("longitude", String.valueOf(longitude));
+                reqObj.put("latLngArea", capturedAddress);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -559,6 +562,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             reqObj.put("photos", tempImgArray);
             reqObj.put("latitude", String.valueOf(latitude));
             reqObj.put("longitude", String.valueOf(longitude));
+            reqObj.put("latLngArea", capturedAddress);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -628,6 +632,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             reqObj.put("photos", tempImgArray);
             reqObj.put("latitude", String.valueOf(latitude));
             reqObj.put("longitude", String.valueOf(longitude));
+            reqObj.put("latLngArea", capturedAddress);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -709,6 +714,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             reqObj.put("photos", tempImgArray);
             reqObj.put("latitude", String.valueOf(latitude));
             reqObj.put("longitude", String.valueOf(longitude));
+            reqObj.put("latLngArea", capturedAddress);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -773,6 +779,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             reqObj.put("photos", tempImgArray);
             reqObj.put("latitude", String.valueOf(latitude));
             reqObj.put("longitude", String.valueOf(longitude));
+            reqObj.put("latLngArea", capturedAddress);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -1591,6 +1598,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         super.onBackPressed();
     }
 
+    String capturedAddress = "";
     @Override
     public void onLocationChanged(Location location) {
         Log.d("Tag", "LatLng===>" + location.getLatitude() + " " + location.getLongitude());
@@ -1598,6 +1606,23 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         if (location.getLatitude() != 0.0 && location.getLongitude() != 0.0) {
             latitude = location.getLatitude();
             longitude = location.getLongitude();
+
+            Geocoder gc = new Geocoder(this, Locale.getDefault());
+            try {
+                List<Address> addresses = gc.getFromLocation(latitude, longitude, 1);
+                StringBuilder sb = new StringBuilder();
+                if (addresses.size() > 0) {
+                    Address address = addresses.get(0);
+                    for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
+                        sb.append(address.getAddressLine(i)).append("\n");
+                    }
+                    if (address.getAddressLine(0) != null)
+                        capturedAddress=address.getAddressLine(0);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
 
     }

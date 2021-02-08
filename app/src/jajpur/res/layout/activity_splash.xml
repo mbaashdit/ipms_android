@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/jaj_splash"
+    android:id="@+id/rl_splash_root"
+    tools:context=".ui.activities.SplashActivity">
+
+
+    <com.aashdit.ipms.views.MonBold
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/space_30"
+        android:text="IPMS"
+        android:visibility="gone"
+        android:textColor="@color/colorWhite"
+        android:textSize="50sp" />
+</RelativeLayout>
