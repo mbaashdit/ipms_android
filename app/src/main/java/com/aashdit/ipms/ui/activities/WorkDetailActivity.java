@@ -47,6 +47,7 @@ import com.aashdit.ipms.R;
 import com.aashdit.ipms.adapters.CapturedImageAdapter;
 import com.aashdit.ipms.adapters.ProgressAdapter;
 import com.aashdit.ipms.app.App;
+import com.aashdit.ipms.databinding.ActivityWorkDetailBinding;
 import com.aashdit.ipms.models.ClickedImage;
 import com.aashdit.ipms.models.Progress;
 import com.aashdit.ipms.network.ANetwork;
@@ -61,6 +62,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.snackbar.Snackbar;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -150,12 +152,15 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
     private LocationManager locationManager;
     private ConnectivityChangeReceiver mConnectivityChangeReceiver;
     private boolean isConnected;
-    private double latitude, longitude;
+//    private double latitude, longitude;
+
+    private ActivityWorkDetailBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_work_detail);
+        binding = ActivityWorkDetailBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         mConnectivityChangeReceiver = new ConnectivityChangeReceiver();
         mConnectivityChangeReceiver.setConnectivityReceiverListener(this);
@@ -452,7 +457,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
                 tempImgArray.put(ImageUtil.convert(base64Strings.get(i).getImageCaptured()));
             }
         }
-        if (latitude == 0.0 || longitude == 0.0) {
+        if ( App.latitude == 0.0 ||  App.longitude == 0.0) {
             Toast.makeText(this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
         } else {
 
@@ -462,8 +467,8 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
                 reqObj.put("actionDate", date);
                 reqObj.put("remarks", reason);
                 reqObj.put("photos", tempImgArray);
-                reqObj.put("latitude", String.valueOf(latitude));
-                reqObj.put("longitude", String.valueOf(longitude));
+                reqObj.put("latitude", String.valueOf( App.latitude));
+                reqObj.put("longitude", String.valueOf( App.longitude));
                 reqObj.put("latLngArea", capturedAddress);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -560,8 +565,8 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             reqObj.put("workPlanId", workPlanId);
             reqObj.put("actionDate", date);
             reqObj.put("photos", tempImgArray);
-            reqObj.put("latitude", String.valueOf(latitude));
-            reqObj.put("longitude", String.valueOf(longitude));
+            reqObj.put("latitude", String.valueOf( App.latitude));
+            reqObj.put("longitude", String.valueOf( App.longitude));
             reqObj.put("latLngArea", capturedAddress);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -630,8 +635,8 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             reqObj.put("workPlanId", workPlanId);
             reqObj.put("actionDate", date);
             reqObj.put("photos", tempImgArray);
-            reqObj.put("latitude", String.valueOf(latitude));
-            reqObj.put("longitude", String.valueOf(longitude));
+            reqObj.put("latitude", String.valueOf( App.latitude));
+            reqObj.put("longitude", String.valueOf( App.longitude));
             reqObj.put("latLngArea", capturedAddress);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -712,8 +717,8 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         try {
             dataObj.put("data", reqObj);
             reqObj.put("photos", tempImgArray);
-            reqObj.put("latitude", String.valueOf(latitude));
-            reqObj.put("longitude", String.valueOf(longitude));
+            reqObj.put("latitude", String.valueOf( App.latitude));
+            reqObj.put("longitude", String.valueOf( App.longitude));
             reqObj.put("latLngArea", capturedAddress);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -777,8 +782,8 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             reqObj.put("workPlanId", workPlanId);
             reqObj.put("actualProgress", actualProgress);
             reqObj.put("photos", tempImgArray);
-            reqObj.put("latitude", String.valueOf(latitude));
-            reqObj.put("longitude", String.valueOf(longitude));
+            reqObj.put("latitude", String.valueOf( App.latitude));
+            reqObj.put("longitude", String.valueOf( App.longitude));
             reqObj.put("latLngArea", capturedAddress);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -1032,7 +1037,22 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         View dialogView = getLayoutInflater().inflate(R.layout.bottom_sheet_restart_work, null);
         dialog = new BottomSheetDialog(this);
         dialog.setContentView(dialogView);
-
+        dialogView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        clickedImages.clear();
+                        ciadapter.notifyDataSetChanged();
+//                        behavior.setAllowUserDragging(false);
+                        break;
+                    case MotionEvent.ACTION_UP:
+//                        behavior.setAllowUserDragging(true);
+                        break;
+                }
+                return true;
+            }
+        });
         RelativeLayout mRlUpload = dialogView.findViewById(R.id.rl_upload_photo);
         ImageView mIvEsd = dialogView.findViewById(R.id.iv_esd);
         ImageView mIvClose = dialogView.findViewById(R.id.iv_sheet_restart_work_close);
@@ -1090,6 +1110,8 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         mIvClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                clickedImages.clear();
+                ciadapter.notifyDataSetChanged();
                 dialog.dismiss();
             }
         });
@@ -1099,26 +1121,30 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             @Override
             public void onClick(View view) {
                 String date = mTvDate.getText().toString().trim();
-                if (!TextUtils.isEmpty(date)) {
-                    if (isDateSelected) {
-                        if (clickedImages != null && clickedImages.size() > 0) {
-                            if (latitude == 0.0 || longitude == 0.0) {
-                                Toast.makeText(WorkDetailActivity.this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
-                            } else {
-                                if (isConnected) {
-                                    progressResume(date, clickedImages);
+                if (isProviderEnabled) {
+                    if (!TextUtils.isEmpty(date)) {
+                        if (isDateSelected) {
+                            if (clickedImages != null && clickedImages.size() > 0) {
+                                if (App.latitude == 0.0 || App.longitude == 0.0) {
+                                    Toast.makeText(WorkDetailActivity.this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
+                                    if (isConnected) {
+                                        progressResume(date, clickedImages);
+                                    } else {
+                                        Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
+                                    }
                                 }
+                            } else {
+                                Toast.makeText(WorkDetailActivity.this, "Please capture an image", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(WorkDetailActivity.this, "Please capture an image", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(WorkDetailActivity.this, "Please select the date", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(WorkDetailActivity.this, "Please select the date", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(WorkDetailActivity.this, "Please select the date", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(WorkDetailActivity.this, "Please Enable Location", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -1130,7 +1156,22 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         View dialogView = getLayoutInflater().inflate(R.layout.bottom_sheet_stop_work, null);
         dialog = new BottomSheetDialog(this);
         dialog.setContentView(dialogView);
-
+        dialogView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        clickedImages.clear();
+                        ciadapter.notifyDataSetChanged();
+//                        behavior.setAllowUserDragging(false);
+                        break;
+                    case MotionEvent.ACTION_UP:
+//                        behavior.setAllowUserDragging(true);
+                        break;
+                }
+                return true;
+            }
+        });
         RelativeLayout mRlUpload = dialogView.findViewById(R.id.rl_upload_photo);
         ImageView mIvEsd = dialogView.findViewById(R.id.iv_esd);
         ImageView mIvClose = dialogView.findViewById(R.id.iv_sheet_start_work_close);
@@ -1196,23 +1237,26 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             public void onClick(View view) {
                 String reason = mEtStopReason.getText().toString().trim();
                 String date = mTvDate.getText().toString().trim();
-
-                if (date.equals("Stop Date")) {
-                    Toast.makeText(WorkDetailActivity.this, "Please select the date", Toast.LENGTH_SHORT).show();
-                }else if (clickedImages == null) {
-                    Toast.makeText(WorkDetailActivity.this, "Please capture an image", Toast.LENGTH_SHORT).show();
-                } else if (clickedImages.size() == 0) {
-                    Toast.makeText(WorkDetailActivity.this, "Please capture an image", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(reason)) {
-                    Toast.makeText(WorkDetailActivity.this, "Please select the reason", Toast.LENGTH_SHORT).show();
-                } else if (latitude == 0.0 || longitude == 0.0) {
-                    Toast.makeText(WorkDetailActivity.this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (isConnected) {
-                        progressStop(reason, date, clickedImages);
+                if (isProviderEnabled) {
+                    if (date.equals("Stop Date")) {
+                        Toast.makeText(WorkDetailActivity.this, "Please select the date", Toast.LENGTH_SHORT).show();
+                    } else if (clickedImages == null) {
+                        Toast.makeText(WorkDetailActivity.this, "Please capture an image", Toast.LENGTH_SHORT).show();
+                    } else if (clickedImages.size() == 0) {
+                        Toast.makeText(WorkDetailActivity.this, "Please capture an image", Toast.LENGTH_SHORT).show();
+                    } else if (TextUtils.isEmpty(reason)) {
+                        Toast.makeText(WorkDetailActivity.this, "Please select the reason", Toast.LENGTH_SHORT).show();
+                    } else if (App.latitude == 0.0 || App.longitude == 0.0) {
+                        Toast.makeText(WorkDetailActivity.this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
+                        if (isConnected) {
+                            progressStop(reason, date, clickedImages);
+                        } else {
+                            Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
+                        }
                     }
+                }else {
+                    Toast.makeText(WorkDetailActivity.this, "Please Enable Location", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -1233,6 +1277,8 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         mIvClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                clickedImages.clear();
+                ciadapter.notifyDataSetChanged();
                 dialog.dismiss();
             }
         });
@@ -1245,6 +1291,23 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         View dialogView = getLayoutInflater().inflate(R.layout.bottom_sheet_start_work, null);
         dialog = new BottomSheetDialog(this);
         dialog.setContentView(dialogView);
+
+        dialogView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        clickedImages.clear();
+                        ciadapter.notifyDataSetChanged();
+//                        behavior.setAllowUserDragging(false);
+                        break;
+                    case MotionEvent.ACTION_UP:
+//                        behavior.setAllowUserDragging(true);
+                        break;
+                }
+                return true;
+            }
+        });
 
         RelativeLayout mRlUpload = dialogView.findViewById(R.id.rl_upload_photo);
         ImageView mIvEsd = dialogView.findViewById(R.id.iv_esd);
@@ -1289,25 +1352,27 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         mBtnStart.setOnClickListener(view -> {
             String reason = mEtStartReason.getText().toString().trim();
             String date = mTvDate.getText().toString().trim();
-
-            if (date.equals("Start Date")) {
-                Toast.makeText(this, "Please select a date", Toast.LENGTH_SHORT).show();
-            } else if (isDateSelected) {
-                if (latitude == 0.0 || longitude == 0.0) {
-                    Toast.makeText(this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (clickedImages != null && clickedImages.size() > 0 && latitude != 0.0 && longitude != 0.0) {
-                        if (isConnected) {
-                            progressStart(date, clickedImages);
-                        } else {
-                            Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
-                        }
+            if (isProviderEnabled) {
+                if (date.equals("Start Date")) {
+                    Toast.makeText(this, "Please select a date", Toast.LENGTH_SHORT).show();
+                } else if (isDateSelected) {
+                    if (App.latitude == 0.0 || App.longitude == 0.0) {
+                        Toast.makeText(this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(WorkDetailActivity.this, "Please capture an image", Toast.LENGTH_SHORT).show();
+                        if (clickedImages != null && clickedImages.size() > 0 && App.latitude != 0.0 && App.longitude != 0.0) {
+                            if (isConnected) {
+                                progressStart(date, clickedImages);
+                            } else {
+                                Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(WorkDetailActivity.this, "Please capture an image", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
+            }else {
+                Toast.makeText(WorkDetailActivity.this, "Please Enable Location", Toast.LENGTH_SHORT).show();
             }
-
 
         });
 
@@ -1318,17 +1383,35 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             }
         });
         mIvEsd.setOnClickListener(view -> datePickerDialog.show());
-        mIvClose.setOnClickListener(view -> dialog.dismiss());
+        mIvClose.setOnClickListener(view -> {
+            clickedImages.clear();
+            ciadapter.notifyDataSetChanged();
+            dialog.dismiss();
+        });
 
         dialog.show();
     }
-
 
     private void setupActualProgress() {
         View dialogView = getLayoutInflater().inflate(R.layout.bottom_sheet_actual_progress, null);
         dialog = new BottomSheetDialog(this);
         dialog.setContentView(dialogView);
-
+        dialogView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        actualProgressImages.clear();
+                        ciadapter.notifyDataSetChanged();
+//                        behavior.setAllowUserDragging(false);
+                        break;
+                    case MotionEvent.ACTION_UP:
+//                        behavior.setAllowUserDragging(true);
+                        break;
+                }
+                return true;
+            }
+        });
 
         ImageView mIvCapture = dialogView.findViewById(R.id.iv_camera);
         mIvCapture.setOnClickListener(v -> {
@@ -1353,24 +1436,32 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         });
         mRvActualImages.setAdapter(ciadapter);
         mBtnUpdate.setOnClickListener(view -> {
-            String actualProgress = mEtActualProgress.getText().toString().trim();
-            if (actualProgressImages.size() == 0) {
-                Toast.makeText(this, "Please capture image", Toast.LENGTH_SHORT).show();
-            } else if (TextUtils.isEmpty(actualProgress)) {
-                Toast.makeText(getApplicationContext(), "Please fill the actual progress", Toast.LENGTH_LONG).show();
-            } else if (latitude == 0.0 || longitude == 0.0) {
-                Toast.makeText(this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
-            } else {
-                if (isConnected) {
-                    updateActualProgress(actualProgress);
-                } else {
-                    Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
-                }
-            }
+                    if (isProviderEnabled) {
+                        String actualProgress = mEtActualProgress.getText().toString().trim();
+                        if (actualProgressImages.size() == 0) {
+                            Toast.makeText(this, "Please capture image", Toast.LENGTH_SHORT).show();
+                        } else if (TextUtils.isEmpty(actualProgress)) {
+                            Toast.makeText(getApplicationContext(), "Please fill the actual progress", Toast.LENGTH_LONG).show();
+                        } else if (App.latitude == 0.0 || App.longitude == 0.0) {
+                            Toast.makeText(this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if (isConnected) {
+                                updateActualProgress(actualProgress);
+                            } else {
+                                Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }else {
+                        Toast.makeText(WorkDetailActivity.this, "Please Enable Location", Toast.LENGTH_SHORT).show();
+                    }
         });
 
 
-        mIvClose.setOnClickListener(view -> dialog.dismiss());
+        mIvClose.setOnClickListener(view -> {
+            actualProgressImages.clear();
+            ciadapter.notifyDataSetChanged();
+            dialog.dismiss();
+        });
         dialog.show();
     }
 
@@ -1380,7 +1471,22 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
         View dialogView = getLayoutInflater().inflate(R.layout.bottom_sheet_pause_work, null);
         dialog = new BottomSheetDialog(this);
         dialog.setContentView(dialogView);
-
+        dialogView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        clickedImages.clear();
+                        ciadapter.notifyDataSetChanged();
+//                        behavior.setAllowUserDragging(false);
+                        break;
+                    case MotionEvent.ACTION_UP:
+//                        behavior.setAllowUserDragging(true);
+                        break;
+                }
+                return true;
+            }
+        });
         RecyclerView mRvSelectedImages = dialogView.findViewById(R.id.rv_selected_photos);
         mRvSelectedImages.setLayoutManager(new LinearLayoutManager(WorkDetailActivity.this, RecyclerView.HORIZONTAL, false));
         ImageView mIvEsd = dialogView.findViewById(R.id.iv_esd);
@@ -1440,32 +1546,33 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             String reason = mEtReason.getText().toString().trim();
             String date = mTvDate.getText().toString().trim();
 
-
-            if (isDateSelected) {
-                if (clickedImages.size() > 0) {
-                    if (!TextUtils.isEmpty(reason)) {
-                        if (latitude == 0.0 || longitude == 0.0) {//getLocation();
-                            Toast.makeText(WorkDetailActivity.this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (isConnected) {
-                                progressPaused(reason, date, clickedImages);
+            if (isProviderEnabled) {
+                if (isDateSelected) {
+                    if (clickedImages.size() > 0) {
+                        if (!TextUtils.isEmpty(reason)) {
+                            if (App.latitude == 0.0 || App.longitude == 0.0) {//getLocation();
+                                Toast.makeText(WorkDetailActivity.this, "GETTING LOCATION. PLEASE WAIT", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
+                                if (isConnected) {
+                                    progressPaused(reason, date, clickedImages);
+                                } else {
+                                    Toast.makeText(WorkDetailActivity.this, getResources().getString(R.string.internet_issue), Toast.LENGTH_SHORT).show();
+                                }
                             }
+                        } else {
+                            Toast.makeText(WorkDetailActivity.this, "Please enter the reason for pause", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(WorkDetailActivity.this, "Please enter the reason for pause", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WorkDetailActivity.this, "Please capture image", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(WorkDetailActivity.this, "Please capture image", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WorkDetailActivity.this, "Please select a date", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(WorkDetailActivity.this, "Please select a date", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(WorkDetailActivity.this, "Please Enable Location", Toast.LENGTH_SHORT).show();
             }
 
-
         });
-        mIvClose.setOnClickListener(view -> dialog.dismiss());
 
         ciadapter = new CapturedImageAdapter(clickedImages, WorkDetailActivity.this);
         ciadapter.setRemoveListener(new CapturedImageAdapter.RemoveListener() {
@@ -1476,6 +1583,11 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
             }
         });
         mRvSelectedImages.setAdapter(ciadapter);
+        mIvClose.setOnClickListener(view -> {
+            clickedImages.clear();
+            ciadapter.notifyDataSetChanged();
+            dialog.dismiss();
+        });
 
         base64Strings.clear();
         for (int i = 0; i < clickedImages.size(); i++) {
@@ -1601,15 +1713,16 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
     String capturedAddress = "";
     @Override
     public void onLocationChanged(Location location) {
+        isProviderEnabled = true;
         Log.d("Tag", "LatLng===>" + location.getLatitude() + " " + location.getLongitude());
 
         if (location.getLatitude() != 0.0 && location.getLongitude() != 0.0) {
-            latitude = location.getLatitude();
-            longitude = location.getLongitude();
+            App.latitude = location.getLatitude();
+            App.longitude = location.getLongitude();
 
             Geocoder gc = new Geocoder(this, Locale.getDefault());
             try {
-                List<Address> addresses = gc.getFromLocation(latitude, longitude, 1);
+                List<Address> addresses = gc.getFromLocation( App.latitude,  App.longitude, 1);
                 StringBuilder sb = new StringBuilder();
                 if (addresses.size() > 0) {
                     Address address = addresses.get(0);
@@ -1617,7 +1730,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
                         sb.append(address.getAddressLine(i)).append("\n");
                     }
                     if (address.getAddressLine(0) != null)
-                        capturedAddress=address.getAddressLine(0);
+                        App.capturedAddress=address.getAddressLine(0);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -1634,12 +1747,57 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
 
     @Override
     public void onProviderEnabled(String provider) {
-
+        isProviderEnabled = true;
+//        Toast.makeText(this, "Please Enable GPS Provider", Toast.LENGTH_SHORT).show();
+        if(locationManager != null) {
+            try {
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                assert locationManager != null;
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
+            } catch (SecurityException e) {
+                e.printStackTrace();
+            }
+        }
     }
+    private boolean isProviderEnabled;
 
     @Override
     public void onProviderDisabled(String provider) {
+        isProviderEnabled = false;
+//        Toast.makeText(this, "GPS Provider Disabled", Toast.LENGTH_SHORT).show();
+        Snackbar.make(binding.rlWorkDetailRoot,"GPS Provider Disabled",Snackbar.LENGTH_LONG).show();
+        Dexter.withActivity(this)
+                .withPermissions(
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        // check if all permissions are granted
+                        if (report.areAllPermissionsGranted()) {
+                            // do your work now
+//                                Toast.makeText(getApplicationContext(), "All permissions are granted!", Toast.LENGTH_SHORT).show();
+//                            handler.postDelayed(runnable, 2000);
 
+                            getLocation();
+                        }
+
+                        // check for permanent denial of any permission
+                        if (report.isAnyPermissionPermanentlyDenied()) {
+                            // permission is denied permenantly, navigate user to app settings
+                            showSettingsDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                })
+                .onSameThread()
+                .check();
     }
 
     @Override

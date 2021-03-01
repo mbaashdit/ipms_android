@@ -16,6 +16,9 @@ public class App extends Application {
 
     private static final String TAG = "App";
     private static App mInstance;
+    public static double latitude = 0.0;
+    public static double longitude = 0.0;
+    public static String capturedAddress = "";
 
     @Override
     public void onCreate() {
@@ -25,6 +28,7 @@ public class App extends Application {
         Realm.init(this);
         mInstance = this;
     }
+
     public static synchronized App getInstance() {
         return mInstance;
     }

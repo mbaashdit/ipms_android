@@ -1,9 +1,15 @@
 package com.aashdit.ipms.ui.activities;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
@@ -30,12 +36,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.aashdit.ipms.BuildConfig;
 import com.aashdit.ipms.R;
 import com.aashdit.ipms.adapters.UnApprovedWorkComponentsAdapter;
 import com.aashdit.ipms.adapters.WorkComponentsAdapter;
 import com.aashdit.ipms.app.App;
+import com.aashdit.ipms.databinding.ActivityNewAddPlanBinding;
 import com.aashdit.ipms.models.FileOffline;
 import com.aashdit.ipms.models.PlanableWorks;
 import com.aashdit.ipms.models.PlansOffline;
@@ -75,6 +83,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -88,7 +97,7 @@ import static com.aashdit.ipms.util.Constants.PPTX;
 import static com.aashdit.ipms.util.Constants.XLS;
 import static com.aashdit.ipms.util.Constants.XLSX;
 
-public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallbacks,
+public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallbacks, LocationListener,
         UnApprovedWorkComponentsAdapter.OnWorkComponentListener, WorkComponentsAdapter.OnWorkComponentListener,
         ConnectivityChangeReceiver.ConnectivityReceiverListener, ActionMode.Callback {
 
@@ -124,6 +133,8 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
     private ConnectivityChangeReceiver mConnectivityChangeReceiver;
     private boolean isConnected;
     private Realm realm;
+
+    private ActivityNewAddPlanBinding binding;
 
 
     /**
@@ -182,7 +193,8 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_add_plan);
+        binding = ActivityNewAddPlanBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -328,7 +340,38 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
             mTvFileName.setVisibility(View.GONE);
         }
 
+        Dexter.withActivity(this)
+                .withPermissions(
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        // check if all permissions are granted
+                        if (report.areAllPermissionsGranted()) {
+                            // do your work now
+//                                Toast.makeText(getApplicationContext(), "All permissions are granted!", Toast.LENGTH_SHORT).show();
+//                            handler.postDelayed(runnable, 2000);
 
+                            getLocation();
+                        }
+
+                        // check for permanent denial of any permission
+                        if (report.isAnyPermissionPermanentlyDenied()) {
+                            // permission is denied permenantly, navigate user to app settings
+                            showSettingsDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                })
+                .onSameThread()
+                .check();
         fabDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -343,6 +386,24 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
                 fabDone.setVisibility(View.GONE);
             }
         });
+
+        binding.swiperefreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                binding.swiperefreshlayout.setRefreshing(false);
+                getPlannableWorksByProjectId();
+            }
+        });
+    }
+    private LocationManager locationManager;
+    private void getLocation() {
+        try {
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            assert locationManager != null;
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, this);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showApproveBottomSheet() {
@@ -622,7 +683,7 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
                                     JSONObject jObj = new JSONObject(response);
                                     String status = jObj.optString("status");
                                     Toast.makeText(NewAddPlanActivity.this, status + " "+jObj.optString("failReason"), Toast.LENGTH_SHORT).show();
-
+                                    getPlannableWorksByProjectId();
                                     fabDone.setVisibility(View.GONE);
                                     fabReUpload.setVisibility(View.GONE);
                                     fabUpload.setVisibility(View.GONE);
@@ -1032,5 +1093,89 @@ public class NewAddPlanActivity extends AppCompatActivity implements PickiTCallb
         selectedPlanableWork.clear();
         fabUpload.setVisibility(View.GONE);
         mTvFileName.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        Log.d("Tag", "LatLng===>" + location.getLatitude() + " " + location.getLongitude());
+
+        if (location.getLatitude() != 0.0 && location.getLongitude() != 0.0) {
+            App.latitude = location.getLatitude();
+            App.longitude = location.getLongitude();
+
+            Geocoder gc = new Geocoder(this, Locale.getDefault());
+            try {
+                List<Address> addresses = gc.getFromLocation( App.latitude,  App.longitude, 1);
+                StringBuilder sb = new StringBuilder();
+                if (addresses.size() > 0) {
+                    Address address = addresses.get(0);
+                    for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
+                        sb.append(address.getAddressLine(i)).append("\n");
+                    }
+                    if (address.getAddressLine(0) != null)
+                        App.capturedAddress=address.getAddressLine(0);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+//        Toast.makeText(this, "Please Enable GPS Provider", Toast.LENGTH_SHORT).show();
+        if(locationManager != null) {
+            try {
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                assert locationManager != null;
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
+            } catch (SecurityException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+//        Toast.makeText(this, "GPS Provider Disabled", Toast.LENGTH_SHORT).show();
+        Snackbar.make(binding.rlNewAddPlan,"GPS Provider Disabled",Snackbar.LENGTH_INDEFINITE).show();
+        Dexter.withActivity(this)
+                .withPermissions(
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        // check if all permissions are granted
+                        if (report.areAllPermissionsGranted()) {
+                            // do your work now
+//                                Toast.makeText(getApplicationContext(), "All permissions are granted!", Toast.LENGTH_SHORT).show();
+//                            handler.postDelayed(runnable, 2000);
+
+                            getLocation();
+                        }
+
+                        // check for permanent denial of any permission
+                        if (report.isAnyPermissionPermanentlyDenied()) {
+                            // permission is denied permenantly, navigate user to app settings
+                            showSettingsDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                })
+                .onSameThread()
+                .check();
     }
 }
