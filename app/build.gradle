@@ -9,8 +9,8 @@ android {
         applicationId "com.aashdit.ipms"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.1-alpha"
+        versionCode 4
+        versionName "1.2-alpha"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,16 +33,16 @@ android {
     productFlavors {
         aashdit {
             dimension "ipms"
-            applicationIdSuffix ".demo"
+//            applicationIdSuffix ".demo"
             buildConfigField("String","FLAVOUR_TYPE","\"DEMO\"")
 //            buildConfigField("String", "BASE_URL", "\"http://192.168.3.190:3000/ipms-web/api/\"")//biswajit
             buildConfigField("String", "BASE_URL", "\"http://209.97.136.18:8080/ipms/api/\"")//official
         }
         stsc {
             dimension "ipms"
-            applicationIdSuffix ".stsc"
+//            applicationIdSuffix ".stsc"
             buildConfigField("String","FLAVOUR_TYPE","\"STSC\"")
-            buildConfigField("String", "BASE_URL", "\"http://209.97.136.18:8080/ipms_STSC/api/\"")
+            buildConfigField("String", "BASE_URL", "\"http://eprakalp.co.in/api/\"")
         }
         jajpur {
             dimension "ipms"
@@ -127,4 +127,7 @@ dependencies {
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //InApp Update
+    implementation 'com.google.android.play:core:1.6.4'
 }

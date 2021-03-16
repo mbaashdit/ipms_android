@@ -314,7 +314,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
                             // do your work now
 //                                Toast.makeText(getApplicationContext(), "All permissions are granted!", Toast.LENGTH_SHORT).show();
 //                            handler.postDelayed(runnable, 2000);
-
+                            isProviderEnabled = true;
                             getLocation();
                         }
 
@@ -1144,7 +1144,7 @@ public class WorkDetailActivity extends AppCompatActivity implements LocationLis
                         Toast.makeText(WorkDetailActivity.this, "Please select the date", Toast.LENGTH_SHORT).show();
                     }
                 }else {
-                    Toast.makeText(WorkDetailActivity.this, "Please Enable Location", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WorkDetailActivity.this, "Please Enable GPS", Toast.LENGTH_SHORT).show();
                 }
             }
         });
